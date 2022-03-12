@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Created country list model to display the list and image in the tableView.
 struct Country {
     
     var title = ""

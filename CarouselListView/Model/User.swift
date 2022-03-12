@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Created User class to display the image view in collection view.
 struct User {
     var image : UIImage
     
