@@ -23,7 +23,6 @@ class ViewController: UIViewController {
                 "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
     
     var filteredData: [String]!
-    
     var timer = Timer()
     var counter = 0
     
@@ -36,18 +35,6 @@ class ViewController: UIViewController {
         filteredData = data
         // Do any additional setup after loading the view.
     }
-    
-    @objc func leftSwiped( ){
-        
-        print("Right Swiped")
-    }
-    
-    @objc func changeImage() {
-        print("Image chnaged")
-    }
-    
-    
-    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -60,13 +47,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if let vc = cell.viewWithTag(111) as? UIImageView {
             vc.image = actressImage[indexPath.row].image
         }
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.leftSwiped))
-        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-        cell.addGestureRecognizer(swipeLeft)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(leftSwiped))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        cell.addGestureRecognizer(swipeRight)
         return cell
     }
     
