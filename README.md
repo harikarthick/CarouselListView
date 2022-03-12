@@ -2,13 +2,18 @@
 
 This project contains CarouselImageView, searchBar and UITableView and UICollectionView.User can filter the list based on the search and user can swipe the image to see the next image.
 
+
 **Carousel** - set the static three images in collection view.
+
 **searchBar** - To filter the list based on the search.
+
 **UITableView** - To list the data
+
 **UICollectionView** - To set the CarouselImageView.
 
 
 **Project Folders:** - Folder the project based on the Apple documentation
+
 App
 Model
 Controller/View
