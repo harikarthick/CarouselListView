@@ -29,7 +29,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="0f7-t3-LrE">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="0f7-t3-LrE" customClass="collectionCell" customModule="CarouselListView" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-7.5" width="371" height="235"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -47,6 +47,9 @@
                                             <constraint firstAttribute="bottom" secondItem="hr4-9D-YDR" secondAttribute="bottom" id="siF-Sm-eM2"/>
                                             <constraint firstItem="hr4-9D-YDR" firstAttribute="top" secondItem="0f7-t3-LrE" secondAttribute="top" id="zNe-im-Czz"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="hr4-9D-YDR" id="oKV-Bi-MKY"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -60,7 +63,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1sk-93-Ecw">
                                 <rect key="frame" x="0.0" y="225" width="375" height="442"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="Ijs-cP-Qkv">
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search list" id="Ijs-cP-Qkv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -92,6 +95,7 @@
                             <constraint firstItem="1sk-93-Ecw" firstAttribute="top" secondItem="VC0-Uj-doX" secondAttribute="bottom" constant="10" id="tPA-fL-ka0"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="pageView" destination="VC0-Uj-doX" id="sbY-Vx-gzP"/>
                         <outlet property="searchBar" destination="Ijs-cP-Qkv" id="6LN-7w-Hqp"/>
