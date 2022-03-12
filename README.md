@@ -22,3 +22,7 @@ Resources
 Created the project using MVC design pattern
 
 Note: Need to use swipe view to use image view scroll to the top.
+
+![Simulator Screen Shot - iPhone 12 - 2022-03-12 at 21 41 18](https://user-images.githubusercontent.com/17402567/158025655-ee4c1ee4-d6e3-485f-8bc0-df7af337d1fd.png)
+
+
