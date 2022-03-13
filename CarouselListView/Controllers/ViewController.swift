@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     var actressImage = User.FetchUserImage()
     var country = [Country]()
-
     
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
                 "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -43,22 +42,26 @@ class ViewController: UIViewController {
         searchBar.delegate = self
         filteredData = data
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
-            
-        leftSwipe.direction = .left
-        rightSwipe.direction = .right
-
-        sliderCollectionView.addGestureRecognizer(leftSwipe)
-        sliderCollectionView.addGestureRecognizer(rightSwipe)
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
+        }
     }
     
-
     
-    @IBAction func handleSwipes(_ gestureRecognizer : UISwipeGestureRecognizer) {
-        if gestureRecognizer.state == .ended {
-            // Perform action.
+    
+    func updateCounterAndList(counter: Int) {
+        
+        if counter == 1 {
+            filteredData = data
         }
+        else if counter == 2 {
+            filteredData = data2
+        }
+        else {
+            filteredData = data3
+        }
+        tableView.reloadData()
+        
     }
 
     
@@ -69,12 +72,15 @@ class ViewController: UIViewController {
          self.sliderCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
          pageView.currentPage = counter
          counter += 1
+         updateCounterAndList(counter: counter)
      } else {
          counter = 0
          let index = IndexPath.init(item: counter, section: 0)
          self.sliderCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
          pageView.currentPage = counter
          counter = 1
+         updateCounterAndList(counter: counter)
+
      }
          
      }
@@ -88,9 +94,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? collectionCell
-//        if let vc = cell?.viewWithTag(111) as? UIImageView {
-//            vc.image = actressImage[indexPath.row].image
-//        }
         cell?.imageView.image = actressImage[indexPath.row].image
         return cell ?? UICollectionViewCell()
     }

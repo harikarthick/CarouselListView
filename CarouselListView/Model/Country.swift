@@ -13,20 +13,27 @@ struct Country {
     var title = ""
     var image : UIImage
     
-    static func FetchCountryList () -> [Country]{
+    static func FetchCountryListOne () -> [String]{
         
-        return [ Country(title: "New York", image: UIImage(named: "1" )!) ,
-                 Country(title: "NY", image: UIImage(named: "2" )!) ,
-                 Country(title: "Los Angeles CA", image: UIImage(named: "3" )! ) ,
-                 Country(title: "TX ", image: UIImage(named: "4" )!),
-                 Country(title: "Chicago", image: UIImage(named: "1" )!) ,
-                 Country(title: "Phoenix", image: UIImage(named: "2" )!) ,
-                 Country(title: "Baltimore", image: UIImage(named: "3" )! ) ,
-                 Country(title: "Memphis", image: UIImage(named: "4" )!),
-                 Country(title: "Charlotte", image: UIImage(named: "1" )!) ,
-                 Country(title: "San Antonio, TX", image: UIImage(named: "2" )!) ,
-                 Country(title: "Philadelphia", image: UIImage(named: "3" )! ) ,
-                 Country(title: "Houston, TX", image: UIImage(named: "4" )!)
+        return ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
+                  "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
+                  "Dallas, TX", "Detroit, MI", "San Jose, CA","Indianapolis, IN"
+        ]
+    }
+    
+    static func FetchCountryListTwo () -> [String]{
+        
+        return ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
+                  "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
+                  "Dallas, TX", "Detroit, MI", "San Jose, CA","Indianapolis, IN"
+        ]
+    }
+    
+    static func FetchCountryListThree () -> [String]{
+        
+        return ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
+                  "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
+                  "Dallas, TX", "Detroit, MI", "San Jose, CA","Indianapolis, IN"
         ]
     }
 }
