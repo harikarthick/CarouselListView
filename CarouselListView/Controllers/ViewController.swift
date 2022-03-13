@@ -8,8 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var imageViews: UIImageView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageView: UIPageControl!
@@ -21,7 +20,8 @@ class ViewController: UIViewController {
     
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
                 "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
-                "Dallas, TX", "Detroit, MI", "San Jose, CA"]
+                "Dallas, TX", "Detroit, MI", "San Jose, CA","Indianapolis, IN"
+                ]
     
     let data2 = ["Indianapolis, IN",
                 "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
@@ -39,26 +39,28 @@ class ViewController: UIViewController {
         pageView.numberOfPages = actressImage.count
         pageView.currentPage = 0
         tableView.dataSource = self
+        tableView.delegate = self
         searchBar.delegate = self
         filteredData = data
         
-        let swipeLeftd = UISwipeGestureRecognizer(target: self, action: #selector(self.handleLeftSwipes))
-        swipeLeftd.direction = UISwipeGestureRecognizer.Direction.right
-        sliderCollectionView.addGestureRecognizer(swipeLeftd)
-    }
-    @objc func labelSwipedLeft(sender: UITapGestureRecognizer) {
-        print("labelSwipedLeft called")
-    }
-    
-    @objc func handleLeftSwipe(sender: UITapGestureRecognizer) {
-        print("rigt called")
-        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+            
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+
+        sliderCollectionView.addGestureRecognizer(leftSwipe)
+        sliderCollectionView.addGestureRecognizer(rightSwipe)
     }
     
-    @objc func handleLeftSwipes(sender: UITapGestureRecognizer) {
-        print("labelSwipedLeft called")
-        
+
+    
+    @IBAction func handleSwipes(_ gestureRecognizer : UISwipeGestureRecognizer) {
+        if gestureRecognizer.state == .ended {
+            // Perform action.
+        }
     }
+
     
     @objc func changeImage() {
      
@@ -90,9 +92,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 //            vc.image = actressImage[indexPath.row].image
 //        }
         cell?.imageView.image = actressImage[indexPath.row].image
-        cell?.imageView.isUserInteractionEnabled = true
-          let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.labelSwipedLeft(sender:)))
-        cell?.imageView?.addGestureRecognizer(swipeLeft)
         return cell ?? UICollectionViewCell()
     }
     
@@ -120,10 +119,11 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController:  UITableViewDataSource, UISearchBarDelegate {
+extension ViewController:  UITableViewDataSource, UISearchBarDelegate ,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as UITableViewCell
         cell.textLabel?.text = filteredData[indexPath.row]
+
         return cell
     }
     
@@ -143,5 +143,24 @@ extension ViewController:  UITableViewDataSource, UISearchBarDelegate {
 
 class collectionCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    
+}
+
+
+extension ViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height-100-scrollView.frame.size.height) {
+            tableViewHeight.constant = 0
+        }
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y < 0 {
+            // up
+            print("Up")
+        } else {
+            tableViewHeight.constant = 190
+            print("Called")
+            // down
+        }
+    }
 }

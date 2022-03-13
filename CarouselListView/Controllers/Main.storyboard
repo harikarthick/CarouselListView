@@ -58,10 +58,10 @@
                                 </connections>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VC0-Uj-doX">
-                                <rect key="frame" x="20" y="189" width="335" height="26"/>
+                                <rect key="frame" x="20" y="120" width="335" height="26"/>
                             </pageControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1sk-93-Ecw">
-                                <rect key="frame" x="0.0" y="225" width="375" height="442"/>
+                                <rect key="frame" x="0.0" y="210" width="375" height="457"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search list" id="Ijs-cP-Qkv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -86,13 +86,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VC0-Uj-doX" secondAttribute="trailing" constant="20" id="157-Ca-4sv"/>
                             <constraint firstItem="LlQ-ty-U5P" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5jK-KL-LJ8"/>
                             <constraint firstItem="VC0-Uj-doX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="CXv-5F-qgc"/>
-                            <constraint firstItem="VC0-Uj-doX" firstAttribute="bottom" secondItem="LlQ-ty-U5P" secondAttribute="bottom" constant="-5" id="Jfg-dn-ZcZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1sk-93-Ecw" secondAttribute="bottom" id="QI0-UT-y7w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1sk-93-Ecw" secondAttribute="trailing" id="RiE-G6-Xd6"/>
                             <constraint firstItem="LlQ-ty-U5P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Vns-jv-xUM"/>
                             <constraint firstItem="LlQ-ty-U5P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fcy-hd-jpq"/>
                             <constraint firstItem="1sk-93-Ecw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k5S-Le-61R"/>
-                            <constraint firstItem="1sk-93-Ecw" firstAttribute="top" secondItem="VC0-Uj-doX" secondAttribute="bottom" constant="10" id="tPA-fL-ka0"/>
+                            <constraint firstItem="VC0-Uj-doX" firstAttribute="top" secondItem="LlQ-ty-U5P" secondAttribute="top" constant="120" id="tNc-zm-fmD"/>
+                            <constraint firstItem="1sk-93-Ecw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="210" id="tPA-fL-ka0"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -101,6 +101,7 @@
                         <outlet property="searchBar" destination="Ijs-cP-Qkv" id="6LN-7w-Hqp"/>
                         <outlet property="sliderCollectionView" destination="LlQ-ty-U5P" id="u0b-qM-SOA"/>
                         <outlet property="tableView" destination="1sk-93-Ecw" id="2Ci-8l-d0i"/>
+                        <outlet property="tableViewHeight" destination="tPA-fL-ka0" id="vsZ-cb-XJw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
