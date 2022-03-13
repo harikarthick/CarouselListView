@@ -17,18 +17,6 @@ class ViewController: UIViewController {
     var actressImage = User.FetchUserImage()
     var country = [Country]()
     
-    let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
-                "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
-                "Dallas, TX", "Detroit, MI", "San Jose, CA","Indianapolis, IN"
-                ]
-    
-    let data2 = ["Indianapolis, IN",
-                "Jacksonville, FL", "San Francisco, CA", "Columbus, OH", "Austin, TX",
-                "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
-    
-    let data3 = [ "Austin, TX",
-                "Memphis, TN", "Baltimore, MD", "Charlotte, ND", "Fort Worth, TX"]
-    
     var filteredData: [String]!
     var timer = Timer()
     var counter = 0
@@ -40,7 +28,7 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        filteredData = data
+        filteredData = Country.FetchCountryListOne()
         
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
@@ -52,13 +40,13 @@ class ViewController: UIViewController {
     func updateCounterAndList(counter: Int) {
         
         if counter == 1 {
-            filteredData = data
+            filteredData = Country.FetchCountryListOne()
         }
         else if counter == 2 {
-            filteredData = data2
+            filteredData = Country.FetchCountryListTwo()
         }
         else {
-            filteredData = data3
+            filteredData = Country.FetchCountryListThree()
         }
         tableView.reloadData()
         
@@ -135,7 +123,7 @@ extension ViewController:  UITableViewDataSource, UISearchBarDelegate ,UITableVi
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = searchText.isEmpty ? data : data.filter { (item: String) -> Bool in
+        filteredData = searchText.isEmpty ? Country.FetchCountryListOne() : Country.FetchCountryListOne().filter { (item: String) -> Bool in
             return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         
